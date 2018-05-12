@@ -1,3 +1,27 @@
-<p>
-  search works!
-</p>
+<div class="container top30">
+  <div class="row">
+    <div class="col-md-3">
+      <label for="term">Buscar artistas</label>
+
+      <input type="text" placeholder="Search artist..."
+        class="form-control"
+        (keyup)="searchArtist()"
+        [(ngModel)]='term'
+      >
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div *ngFor="let artist of spotifyService.artists"
+          class="col-md-3 text-center puntero"
+          [routerLink]="['/artist', artist.id]">
+          <img [src]="artist.images | noImage"
+            class="img-thumbnail"
+          >
+          <p>
+            {{artist.name}}
+          </p>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
